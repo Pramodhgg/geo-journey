@@ -37,3 +37,24 @@ function CityItem({ city }) {
   );
 }
 export default CityItem;
+
+const initialValue = {
+  counters: [
+    { id: 1, value: 0 },
+    { id: 2, value: 0 },
+  ],
+};
+function counterReducer(state, action) {
+  if (action.type == "add_counter") {
+    return [...counters, { id: state.length + 1, value: 0 }];
+  } else if (action.type == "increase") {
+    return [
+      ...counter,
+      state.counters.map((counter) => {
+        return counter.id === action.payload
+          ? { ...counter, value: counter.value + 1 }
+          : counter;
+      }),
+    ];
+  }
+}
